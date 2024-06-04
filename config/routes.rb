@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get "/horses",       controller: "horses", action: "index"
   get "/horses/:id",   controller: "horses", action: "show"
   post "/horses",      controller: "horses", action: "create"
-  patch "/horses/:id", controller: "horses", actions: "update"
-  patch "/horses/:id", controller: "horses", actions: "destroy"
+  patch "/horses/:id", controller: "horses", action: "update"
+  delete "/horses/:id", controller: "horses", action: "destroy"
 end
