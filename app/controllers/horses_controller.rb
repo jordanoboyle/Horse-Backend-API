@@ -1,7 +1,8 @@
 class HorsesController < ApplicationController
 
   def index
-    render json: {message: "hello there"}
+    @horses = Horse.all
+    render template: "horses/index"
   end
   
   def show
