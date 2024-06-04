@@ -6,8 +6,8 @@ class HorsesController < ApplicationController
   end
   
   def show
-    @horse = Horse.find_by(id: 2)
-    render json: {message: @horse.breed}
+    @horse = Horse.find_by(id: params[:id])
+    render template: "horses/show"
   end
   
   def create
