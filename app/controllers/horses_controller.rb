@@ -11,8 +11,19 @@ class HorsesController < ApplicationController
   end
   
   def create
-    render json: {message: "hello there"}
+    @horse = Horse.new(
+      build: "pony",
+      color: "white, brown spots",
+      breed: "Mustang",
+      price: 25000,
+      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3GVjTmxAEFHaF-GYegK8jn0CUA06kGWrIQg&s",
+    )
     
+    if @horse.save
+      render json: {breed: @horse.breed}
+    else
+      render json: {ERROR: @horse.errors.full_messages }
+    end
   end
   
   def update
