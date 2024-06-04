@@ -6,8 +6,8 @@ class HorsesController < ApplicationController
   end
   
   def show
-    render json: {message: "hello there"}
-    
+    @horse = Horse.find_by(id: 2)
+    render json: {message: @horse.breed}
   end
   
   def create
