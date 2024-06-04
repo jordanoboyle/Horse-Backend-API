@@ -12,15 +12,14 @@ class HorsesController < ApplicationController
   
   def create
     @horse = Horse.new(
-      build: "pony",
-      color: "white, brown spots",
-      breed: "Mustang",
-      price: 25000,
-      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3GVjTmxAEFHaF-GYegK8jn0CUA06kGWrIQg&s",
-    )
-    
+      breed: params[:breed],
+      color: params[:color],
+      build: params[:build],
+      price: params[:price],
+      image_url: params[:image_url],
+    )   
     if @horse.save
-      render json: {breed: @horse.breed}
+      render json: {confirmation: "Horse Info Saved"}
     else
       render json: {ERROR: @horse.errors.full_messages }
     end
