@@ -46,7 +46,7 @@ class HorsesController < ApplicationController
   end
   
   def destroy
-    @horse = Horse.find_by(id: 59)
+    @horse = Horse.find_by(id: params[:id])
     @horse.destroy
 
     if @horse.destroy
