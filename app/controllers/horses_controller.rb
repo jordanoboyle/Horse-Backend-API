@@ -18,6 +18,8 @@ class HorsesController < ApplicationController
       price: params[:price],
       image_url: params[:image_url],
     )   
+
+    # THIS is the response.data in REACT. template: "horses/show"  Need to have proper response data to get the right render
     if @horse.save
       render template: "horses/show"
     else
