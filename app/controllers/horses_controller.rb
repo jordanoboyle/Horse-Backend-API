@@ -46,7 +46,14 @@ class HorsesController < ApplicationController
   end
   
   def destroy
-    render json: {message: "hello there"}
+    @horse = Horse.find_by(id: 59)
+    @horse.destroy
+
+    if @horse.destroy
+      render json: {message: "Horse Information Eliminated"}
+    else
+      render json: {ERROR: @horse.errors.full_messages}
+    end
 
   end
 end
