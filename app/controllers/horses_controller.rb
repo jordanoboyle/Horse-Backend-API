@@ -19,14 +19,27 @@ class HorsesController < ApplicationController
       image_url: params[:image_url],
     )   
     if @horse.save
-      render json: {confirmation: "Horse Info Saved"}
+      render template: "horses/show"
     else
       render json: {ERROR: @horse.errors.full_messages }
     end
   end
   
   def update
-    render json: {message: "hello there"}
+    @horse = Horse.find_by(id: params[:id])
+    @horse.breed = params[:breed] || @horse.breed
+    @horse.color = params[:color] || @horse.color
+    @horse.build = params[:build] || @horse.build
+    @horse.price = params[:price] || @horse.price
+    @horse.image_url = params[:image_url] || @horse.image_url
+
+    #happy sad
+    if @horse.save
+      render template: "horses/show"
+    else
+      render json: {message: @horse.errors.full_messages}
+    end
+
     
   end
   
