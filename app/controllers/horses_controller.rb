@@ -47,7 +47,6 @@ class HorsesController < ApplicationController
   
   def destroy
     @horse = Horse.find_by(id: params[:id])
-    @horse.destroy
 
     if @horse.destroy
       render json: {message: "Horse Information Eliminated"}
